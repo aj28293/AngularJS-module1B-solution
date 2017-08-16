@@ -7,23 +7,27 @@
   function LunchCheckController ($scope) {
     $scope.foodItems = ""
     $scope.message = "";
-    $scope.checkLunchItems = function() {
+    $scope.checkFoodItems = function() {
       $scope.foodItems = $scope.foodItems.trim();
 
       if ($scope.foodItems === "") {
-        $scope.message = "Please enter data first.";
+        $scope.message = "Please enter data first";
         $scope.noticeType = "danger";
       }
       else {
         var $foodItemsArray = $scope.foodItems.split(",");
         var $length = $foodItemsArray.length;
+/* 		for(var k in $foodItemsArray) {
+			if ($foodItemArray[k].isEmpty()) {$length = $length - 1}
+				
+		}  */
         if ( ($length <= 3) || ($length == 4 && $foodItemsArray[3].trim() === "") ) {
           $scope.message = "Enjoy!";
           $scope.noticeType = "success";
         }
         else {
           $scope.message = "Too much!";
-          $scope.noticeType = "warning";
+          $scope.noticeType = "success";
         }
       }
     };
